@@ -6,7 +6,9 @@ namespace leetCodeSubmissions
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            int[] nums = { 3, 7, 11, 15, 2 };
+            int target = 9;
+            TwoSum.TwoSumFunc(nums, target);
         }
-    }
+}
 }
