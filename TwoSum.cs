@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading.Tasks.Dataflow;
 
 namespace leetCodeSubmissions
 {
@@ -19,24 +20,22 @@ namespace leetCodeSubmissions
 
     public static class TwoSum
     {
+
         public static int[] TwoSumFunc(int[] nums, int target)
         {
-            int index1;
-            int index2;
             for (int i = 0; i < nums.Length; i++)
             {
-                index1 = i;
-                index2 = i + 1;
-                if (index2 > nums.Length)
-                    index2 = 0;
-
-                if (nums[index1] + nums[index2] == target)
+                var firstIndex = nums[i];
+                for (int j = 0; j < nums.Length-1; j++)
                 {
-                    Console.WriteLine($"Success {index1}, {index2}");
-                    return new[] {index1, index2};
+                    if (j != i && nums[j] + firstIndex == target)
+                    {
+                        Console.WriteLine($"Success {i}, {j}");
+                        return new[] { i, j };
+                    }
                 }
-            }
 
+            }           
             Console.WriteLine("Not possible to find indices from this array.");
             return new int[]{0, 0};
         }
